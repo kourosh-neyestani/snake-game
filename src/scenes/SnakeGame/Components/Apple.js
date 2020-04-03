@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default (props) => {
 
-    const location = getRandom();
+    const [location] = useState(getRandom());
+
     const style = {
         top: `${location[1]}%`,
         left: `${location[0]}%`
