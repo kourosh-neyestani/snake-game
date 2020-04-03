@@ -1,4 +1,5 @@
 // Variables
+$size: 5%;
 $base_0: #fff;
 $base_1: #151515;
 $primary: orangered;
@@ -13,6 +14,18 @@ $secondary: lightgreen;
         width: 500px;
         height: 500px;
         margin: auto;
+        position: relative;
         background-color: $secondary;
+        
+        .snake {
+            .snake-cell {
+                width: $size;
+                height: $size;
+                z-index: 1;
+                position: absolute;
+                border: 1px solid $secondary;
+                background-color: $primary;
+            }
+        }
     }
 }
