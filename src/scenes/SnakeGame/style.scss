@@ -1,0 +1,18 @@
+// Variables
+$base_0: #fff;
+$base_1: #151515;
+$primary: orangered;
+$secondary: lightgreen;
+
+// Snake Game
+.snake-game {
+    height: 100vh;
+    position: relative;
+
+    .game-zone {
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        background-color: $secondary;
+    }
+}
