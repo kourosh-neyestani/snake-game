@@ -7,6 +7,40 @@ const SnakeGame = () => {
 
     const [snakeCells, setSnakeCells] = useState([[0, 0], [0, 5]]);
     const [keyPress, setKeyPress] = useState("RIGHT");
+    const [delay] = useState(100);
+
+
+    const crawl = () => {
+        let cells = [...snakeCells];
+        let last = cells[cells.length - 1];
+        let step = 5;
+
+        switch (keyPress) {
+            case 'UP':
+                last = [last[0] - step, last[1]];
+                break;
+            case 'DOWN':
+                last = [last[0] + step, last[1]];
+                break;
+            case 'LEFT':
+                last = [last[0], last[1] - step];
+                break;
+            case 'RIGHT':
+                last = [last[0], last[1] + step];
+                break;
+
+            default:
+                return;
+        }
+        cells.push(last);
+        cells.shift();
+        setSnakeCells(cells);
+    };
+
+    useEffect(() => {
+        let crawling = setInterval(crawl, delay);
+        return () => clearInterval(crawling)
+    });
 
     const handleKeyPress = useCallback(event => {
         let value;
