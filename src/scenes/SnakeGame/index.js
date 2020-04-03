@@ -73,7 +73,6 @@ const SnakeGame = () => {
 
     return (
         <div className="snake-game">
-            {`User Key Press: ${keyPress}`}
             <div className="display-center">
                 <div className="game-zone">
                     <Apple />
