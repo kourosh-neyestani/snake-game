@@ -2,8 +2,9 @@
 $size: 5%;
 $base_0: #fff;
 $base_1: #151515;
-$primary: orangered;
-$secondary: lightgreen;
+$base_2: lightgreen;
+$primary: blue;
+$secondary: red;
 
 // Snake Game
 .snake-game {
@@ -15,7 +16,7 @@ $secondary: lightgreen;
         height: 500px;
         margin: auto;
         position: relative;
-        background-color: $secondary;
+        background-color: $base_2;
         
         .snake {
             .snake-cell {
@@ -23,9 +24,16 @@ $secondary: lightgreen;
                 height: $size;
                 z-index: 1;
                 position: absolute;
-                border: 1px solid $secondary;
+                border: 1px solid $base_2;
                 background-color: $primary;
             }
+        }
+        .apple {
+            width: $size;
+            height: $size;
+            z-index: 0;
+            position: absolute;
+            background-color: $secondary;
         }
     }
 }

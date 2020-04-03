@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Apple from './Components/Apple';
 import Snake from './Components/Snake';
 import './style.scss'
 
@@ -10,8 +11,8 @@ const SnakeGame = () => {
         <div className="snake-game">
             <div className="display-center">
                 <div className="game-zone">
+                    <Apple />
                     <Snake cells={snakeCells} />
-                    <div className="apple"></div>
                 </div>
             </div>
         </div>
