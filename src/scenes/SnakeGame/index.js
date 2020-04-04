@@ -71,8 +71,24 @@ const SnakeGame = () => {
         };
     }, [handleKeyPress]);
 
+    const checkBorders = () => {
+        let last = snakeCells[snakeCells.length - 1];
+        if (last[0] < 0 || last[0] >= 100 || last[1] < 0 || last[1] >= 100) {
+            setSnakeCells([[0, 0], [0, 5]])
+        }
+    }
+
+    useEffect(() => {
+        return () => {
+            checkBorders()
+        }
+    })
+
     return (
         <div className="snake-game">
+            {`First = [${snakeCells[0]}]`}
+            <br/>
+            {`Second = [${snakeCells[1]}]`}
             <div className="display-center">
                 <div className="game-zone">
                     <Apple />
