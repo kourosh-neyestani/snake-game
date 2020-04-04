@@ -107,7 +107,6 @@ const SnakeGame = () => {
 
     useEffect(() => {
         return () => {
-            checkBorders()
             checkBorders();
             checkGrow();
             checkSuicide()
