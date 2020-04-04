@@ -94,6 +94,17 @@ const SnakeGame = () => {
         setSnakeCells(cells);
     };
 
+    const checkSuicide = () => {
+        let cells = [...snakeCells];
+        let last = cells[cells.length - 1];
+        cells.pop();
+        cells.forEach(cell => {
+          if (last[0] == cell[0] && last[1] == cell[1]) {
+            setSnakeCells([[0, 0], [0, 5]])
+          }
+        })
+      }
+
     useEffect(() => {
         return () => {
             checkBorders()
