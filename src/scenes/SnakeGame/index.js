@@ -79,19 +79,8 @@ const SnakeGame = () => {
         }
     }
 
-    useEffect(() => {
-        return () => {
-            checkBorders()
-        }
-    })
-
     return (
         <div className="snake-game">
-            {`First = [${snakeCells[0]}]`}
-            <br />
-            {`Second = [${snakeCells[1]}]`}
-            <br />
-            {`Apple = [${appleLocation}]`}
             <div className="display-center">
                 <div className="game-zone">
                     <Apple location={appleLocation} />
