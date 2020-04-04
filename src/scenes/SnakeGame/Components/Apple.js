@@ -1,23 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default (props) => {
-
-    const [location] = useState(getRandom());
-
     const style = {
-        top: `${location[1]}%`,
-        left: `${location[0]}%`
+        top: `${props.location[1]}%`,
+        left: `${props.location[0]}%`
     }
 
     return (
         <span className="apple" style={style} />
     )
-}
-
-const getRandom = () => {
-    let min = 0;
-    let max = 95;
-    let x = Math.floor((Math.random() * (max - min + 1) + min) / 5) * 5;
-    let y = Math.floor((Math.random() * (max - min + 1) + min) / 5) * 5;
-    return [x, y]
 }

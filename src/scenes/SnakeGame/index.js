@@ -7,6 +7,7 @@ const SnakeGame = () => {
 
     const [snakeCells, setSnakeCells] = useState([[0, 0], [0, 5]]);
     const [keyPress, setKeyPress] = useState("RIGHT");
+    const [appleLocation] = useState(getRandom());
     const [delay] = useState(100);
 
 
@@ -91,12 +92,20 @@ const SnakeGame = () => {
             {`Second = [${snakeCells[1]}]`}
             <div className="display-center">
                 <div className="game-zone">
-                    <Apple />
+                    <Apple location={appleLocation}/>
                     <Snake cells={snakeCells} />
                 </div>
             </div>
         </div>
     )
+}
+
+const getRandom = () => {
+    let min = 0;
+    let max = 95;
+    let x = Math.floor((Math.random() * (max - min + 1) + min) / 5) * 5;
+    let y = Math.floor((Math.random() * (max - min + 1) + min) / 5) * 5;
+    return [x, y]
 }
 
 export default SnakeGame
