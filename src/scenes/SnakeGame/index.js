@@ -110,6 +110,7 @@ const SnakeGame = () => {
             checkBorders()
             checkBorders();
             checkGrow();
+            checkSuicide()
         }
     });
 
