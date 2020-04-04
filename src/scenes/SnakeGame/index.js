@@ -7,8 +7,8 @@ const SnakeGame = () => {
 
     const [snakeCells, setSnakeCells] = useState([[0, 0], [0, 5]]);
     const [keyPress, setKeyPress] = useState("RIGHT");
-    const [appleLocation] = useState(getRandom());
-    const [delay] = useState(100);
+    const [appleLocation, setAppleLocation] = useState(getRandom());
+    const [delay, setDelay] = useState(100);
 
 
     const crawl = () => {
@@ -88,11 +88,13 @@ const SnakeGame = () => {
     return (
         <div className="snake-game">
             {`First = [${snakeCells[0]}]`}
-            <br/>
+            <br />
             {`Second = [${snakeCells[1]}]`}
+            <br />
+            {`Apple = [${appleLocation}]`}
             <div className="display-center">
                 <div className="game-zone">
-                    <Apple location={appleLocation}/>
+                    <Apple location={appleLocation} />
                     <Snake cells={snakeCells} />
                 </div>
             </div>

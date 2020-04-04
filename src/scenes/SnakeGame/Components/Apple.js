@@ -2,8 +2,8 @@ import React from 'react'
 
 export default (props) => {
     const style = {
-        top: `${props.location[1]}%`,
-        left: `${props.location[0]}%`
+        top: `${props.location[0]}%`,
+        left: `${props.location[1]}%`
     }
 
     return (
