@@ -77,13 +77,29 @@ const SnakeGame = () => {
         if (last[0] < 0 || last[0] >= 100 || last[1] < 0 || last[1] >= 100) {
             setSnakeCells([[0, 0], [0, 5]])
         }
-    }
+    };
+
+    const checkGrow = () => {
+        let last = snakeCells[snakeCells.length - 1];
+        let apple = appleLocation;
+        if (last[0] == apple[0] && last[1] == apple[1]) {
+            setAppleLocation(getRandom);
+            grow()
+        }
+    };
+
+    const grow = () => {
+        let cells = [...snakeCells];
+        cells.unshift([]);
+        setSnakeCells(cells);
+    };
 
     useEffect(() => {
         return () => {
-            checkBorders()
+            checkBorders();
+            checkGrow();
         }
-    })
+    });
 
     return (
         <div className="snake-game">
