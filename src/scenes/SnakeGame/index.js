@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react'
 import Apple from './Components/Apple';
 import Snake from './Components/Snake';
 import './style.scss'
+import ReactHowler from 'react-howler'
 
 const SnakeGame = () => {
 
@@ -9,6 +10,7 @@ const SnakeGame = () => {
     const [keyPress, setKeyPress] = useState("RIGHT");
     const [appleLocation, setAppleLocation] = useState(getRandom());
     const [delay, setDelay] = useState(100);
+    const [endSound, setEndSound] = useState(false);
 
 
     const crawl = () => {
@@ -36,6 +38,7 @@ const SnakeGame = () => {
         cells.push(last);
         cells.shift();
         setSnakeCells(cells);
+
     };
 
     useEffect(() => {
@@ -44,6 +47,7 @@ const SnakeGame = () => {
     });
 
     const handleKeyPress = useCallback(event => {
+        setEndSound(false)
         let value;
         const {keyCode} = event;
         switch (keyCode) {
@@ -116,12 +120,14 @@ const SnakeGame = () => {
     const gameOver = () => {
         setSnakeCells([[0, 0], [0, 5]]);
         setKeyPress(null);
+        setEndSound(true)
     };
 
     return (
         <div className="snake-game">
             <div className="display-center">
                 <div className="game-zone">
+                    <ReactHowler playing={endSound} src='/media/game-over.wav'/>
                     <Apple location={appleLocation}/>
                     <Snake cells={snakeCells}/>
                 </div>
