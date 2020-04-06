@@ -11,9 +11,11 @@ const SnakeGame = () => {
     const [appleLocation, setAppleLocation] = useState(getRandom());
     const [delay, setDelay] = useState(100);
     const [endSound, setEndSound] = useState(false);
+    const [eatSound, setEatSound] = useState(false);
 
 
     const crawl = () => {
+        setEatSound(false)
         let cells = [...snakeCells];
         let last = cells[cells.length - 1];
         let step = 5;
@@ -93,6 +95,7 @@ const SnakeGame = () => {
     };
 
     const grow = () => {
+        setEatSound(true)
         let cells = [...snakeCells];
         cells.unshift([]);
         setSnakeCells(cells);
@@ -128,6 +131,7 @@ const SnakeGame = () => {
             <div className="display-center">
                 <div className="game-zone">
                     <ReactHowler playing={endSound} src='/media/game-over.wav'/>
+                    <ReactHowler playing={eatSound} src='/media/eat.wav'/>
                     <Apple location={appleLocation}/>
                     <Snake cells={snakeCells}/>
                 </div>
