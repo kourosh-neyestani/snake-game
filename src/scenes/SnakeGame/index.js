@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import Apple from './Components/Apple';
 import Snake from './Components/Snake';
 import './style.scss'
@@ -45,7 +45,7 @@ const SnakeGame = () => {
 
     const handleKeyPress = useCallback(event => {
         let value;
-        const { keyCode } = event;
+        const {keyCode} = event;
         switch (keyCode) {
             case 38:
                 value = 'UP';
@@ -75,7 +75,7 @@ const SnakeGame = () => {
     const checkBorders = () => {
         let last = snakeCells[snakeCells.length - 1];
         if (last[0] < 0 || last[0] >= 100 || last[1] < 0 || last[1] >= 100) {
-            setSnakeCells([[0, 0], [0, 5]])
+            gameOver();
         }
     };
 
@@ -99,11 +99,11 @@ const SnakeGame = () => {
         let last = cells[cells.length - 1];
         cells.pop();
         cells.forEach(cell => {
-          if (last[0] == cell[0] && last[1] == cell[1]) {
-            setSnakeCells([[0, 0], [0, 5]])
-          }
+            if (last[0] == cell[0] && last[1] == cell[1]) {
+                gameOver();
+            }
         })
-      }
+    };
 
     useEffect(() => {
         return () => {
@@ -113,12 +113,17 @@ const SnakeGame = () => {
         }
     });
 
+    const gameOver = () => {
+        setSnakeCells([[0, 0], [0, 5]]);
+        setKeyPress(null);
+    };
+
     return (
         <div className="snake-game">
             <div className="display-center">
                 <div className="game-zone">
-                    <Apple location={appleLocation} />
-                    <Snake cells={snakeCells} />
+                    <Apple location={appleLocation}/>
+                    <Snake cells={snakeCells}/>
                 </div>
             </div>
         </div>
